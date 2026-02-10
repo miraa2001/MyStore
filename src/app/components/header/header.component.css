@@ -1,0 +1,41 @@
+﻿.header {
+  text-align: center;
+  background: #33b5e5;
+  color: #fff;
+  padding: 12px;
+}
+
+h1 {
+  margin: 0;
+}
+
+h1 a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.header-links {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 10px;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a.active {
+  text-decoration: underline;
+}
+
+.cart-badge {
+  background: #fff;
+  color: #33b5e5;
+  border-radius: 999px;
+  padding: 1px 7px;
+  font-size: 12px;
+  margin-left: 4px;
+}

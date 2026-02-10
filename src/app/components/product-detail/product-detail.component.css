@@ -1,0 +1,32 @@
+﻿img {
+  border-radius: 10px;
+  width: 320px;
+}
+
+.select-input {
+  width: 108px;
+  margin-bottom: 8px;
+}
+
+.detail-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 64px;
+}
+
+.detail-item {
+  margin: 0 128px;
+}
+
+.feedback-message {
+  margin-top: 16px;
+  padding: 12px;
+  border: 1px solid #33b5e5;
+  background: #eff9ff;
+  border-radius: 8px;
+}
+
+.back-link {
+  margin-top: 8px;
+}

@@ -1,0 +1,15 @@
+﻿<div class="confirmation-container">
+  <div class="confirmation-items">
+    <h2 class="confirmation-header">Success! Your order has been placed.</h2>
+
+    <p class="confirmation-item" *ngIf="customerName">
+      Thank you, <strong>{{ customerName }}</strong>.
+    </p>
+
+    <p class="confirmation-item" *ngIf="total > 0">
+      Total paid: <strong>{{ total | currency }}</strong>
+    </p>
+
+    <a routerLink="/">Back to product list</a>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+﻿<div class="empty-cart-message" *ngIf="items.length === 0">
+  <p>Your cart is empty. <a routerLink="/">Continue shopping</a>.</p>
+</div>
+
+<div class="cart-container" *ngIf="items.length > 0">
+  <div class="cart-panel">
+    <h2>Your Cart</h2>
+    <p class="feedback-message" *ngIf="feedbackMessage">{{ feedbackMessage }}</p>
+
+    <div class="cart-item" *ngFor="let item of items">
+      <img [src]="item.product.url" [alt]="item.product.name" />
+
+      <div class="cart-item-details">
+        <h3>{{ item.product.name }}</h3>
+        <p>{{ item.product.price | currency }}</p>
+        <label class="form-margin" for="qty-{{ item.product.id }}">Quantity</label>
+        <input
+          id="qty-{{ item.product.id }}"
+          class="number-input"
+          type="number"
+          min="1"
+          [(ngModel)]="item.quantity"
+          (ngModelChange)="onQuantityChange(item.product.id, $event)"
+        />
+        <button type="button" (click)="removeItem(item.product.id)">Remove</button>
+      </div>
+    </div>
+
+    <h3>Total: {{ total | currency }}</h3>
+    <button type="button" routerLink="/checkout">Go To Checkout</button>
+  </div>
+</div>

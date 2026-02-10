@@ -1,0 +1,30 @@
+﻿<div class="detail-container" *ngIf="product; else productNotFound">
+  <div class="detail-item">
+    <img [src]="product.url" [alt]="product.name" />
+  </div>
+
+  <div class="detail-item">
+    <h2>{{ product.name }}</h2>
+    <p>{{ product.price | currency }}</p>
+    <p>{{ product.description }}</p>
+
+    <input
+      class="select-input"
+      type="number"
+      min="1"
+      [(ngModel)]="quantity"
+      (ngModelChange)="onQuantityChange($event)"
+    />
+    <br />
+    <button type="button" (click)="addToCart()">Add to Cart</button>
+
+    <p class="feedback-message" *ngIf="feedbackMessage">{{ feedbackMessage }}</p>
+    <p class="back-link"><a routerLink="/">Back to product list</a></p>
+  </div>
+</div>
+
+<ng-template #productNotFound>
+  <div class="detail-container">
+    <p>Product not found.</p>
+  </div>
+</ng-template>

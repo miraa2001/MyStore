@@ -1,0 +1,14 @@
+﻿<div class="product-container">
+  <img class="product-image" [src]="product.url" [alt]="product.name" />
+  <h3>{{ product.name }}</h3>
+  <p>{{ product.price | currency }}</p>
+  <a [routerLink]="['/products', product.id]">View Details</a>
+  <input
+    class="select-input"
+    type="number"
+    min="1"
+    [(ngModel)]="quantity"
+    (ngModelChange)="onQuantityChange($event)"
+  />
+  <button type="button" (click)="addToCart()">Add to Cart</button>
+</div>

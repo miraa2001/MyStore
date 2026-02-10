@@ -1,0 +1,62 @@
+﻿<div class="checkout-container" *ngIf="total > 0; else emptyCart">
+  <h2>Checkout</h2>
+  <p>Total: {{ total | currency }}</p>
+
+  <form #checkoutForm="ngForm" (ngSubmit)="onSubmit(checkoutForm)" novalidate>
+    <div class="form-field">
+      <label for="fullName">Full Name</label>
+      <input
+        id="fullName"
+        name="fullName"
+        type="text"
+        required
+        minlength="3"
+        [(ngModel)]="checkoutModel.fullName"
+        #fullName="ngModel"
+      />
+      <p class="error" *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)">
+        Full name is required and must be at least 3 characters.
+      </p>
+    </div>
+
+    <div class="form-field">
+      <label for="address">Address</label>
+      <input
+        id="address"
+        name="address"
+        type="text"
+        required
+        [(ngModel)]="checkoutModel.address"
+        #address="ngModel"
+      />
+      <p class="error" *ngIf="address.invalid && (address.dirty || address.touched)">
+        Address is required.
+      </p>
+    </div>
+
+    <div class="form-field">
+      <label for="creditCard">Credit Card</label>
+      <input
+        id="creditCard"
+        name="creditCard"
+        type="text"
+        required
+        pattern="^[0-9]{12,19}$"
+        [(ngModel)]="checkoutModel.creditCard"
+        #creditCard="ngModel"
+      />
+      <p class="error" *ngIf="creditCard.invalid && (creditCard.dirty || creditCard.touched)">
+        Credit card is required and must be 12 to 19 digits.
+      </p>
+    </div>
+
+    <button type="submit" [disabled]="checkoutForm.invalid">Submit Order</button>
+  </form>
+</div>
+
+<ng-template #emptyCart>
+  <div class="checkout-container">
+    <h2>Checkout</h2>
+    <p>Your cart is empty. <a routerLink="/">Go back to products</a>.</p>
+  </div>
+</ng-template>
