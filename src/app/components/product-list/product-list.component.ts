@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { Product } from '../../models/product';
 import { CartService } from '../../services/cart.service';
 import { ProductService } from '../../services/product.service';
+import { AddToCartEvent } from '../product-item/product-item.component';
 
 @Component({
   selector: 'app-product-list',
@@ -32,5 +33,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.feedbackSubscription?.unsubscribe();
+  }
+
+  onAddToCartRequested(event: AddToCartEvent): void {
+    this.cartService.addToCart(event.product, event.quantity);
   }
 }

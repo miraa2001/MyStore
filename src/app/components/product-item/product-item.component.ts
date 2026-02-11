@@ -1,6 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../models/product';
-import { CartService } from '../../services/cart.service';
+
+export interface AddToCartEvent {
+  product: Product;
+  quantity: number;
+}
 
 @Component({
   selector: 'app-product-item',
@@ -9,17 +13,19 @@ import { CartService } from '../../services/cart.service';
 })
 export class ProductItemComponent {
   @Input() product!: Product;
+  @Output() addToCartRequested = new EventEmitter<AddToCartEvent>();
 
   quantity = 1;
-
-  constructor(private readonly cartService: CartService) {}
 
   onQuantityChange(quantity: number | string): void {
     this.quantity = this.normalizeQuantity(quantity);
   }
 
   addToCart(): void {
-    this.cartService.addToCart(this.product, this.quantity);
+    this.addToCartRequested.emit({
+      product: this.product,
+      quantity: this.quantity
+    });
   }
 
   private normalizeQuantity(quantity: number | string): number {

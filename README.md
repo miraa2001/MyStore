@@ -32,6 +32,7 @@ This local JSON file simulates an external API response for catalog and detail v
 ## State Management & Data Flow
 Cart state is centralized in `CartService` and shared across unrelated components.
 Parent-to-child rendering uses `@Input` for passing product data into `ProductItem`.
+Child-to-parent communication uses `@Output` in `ProductItem` to notify `ProductList` when add-to-cart is requested.
 Routing manages view transitions between product list, product detail, cart, checkout, and confirmation pages.
 
 ## Install and Run
